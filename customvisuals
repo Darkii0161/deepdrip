@@ -1,0 +1,82 @@
+--[[Made by Pot]]
+
+if not game:IsLoaded() then
+    repeat task.wait(0.1) until game:IsLoaded()
+end    
+
+local Player = game.Players.LocalPlayer
+if not game.Workspace:FindFirstChild("Live") then
+    Player:Kick("don't execute this script here.".."   --Pot")
+end   
+if not game.Workspace.Live:FindFirstChild(Player.Name) then
+    Player:Kick("only exectute when you have loaded in your character.".."   --Pot")
+end    
+local Character = game.Workspace.Live:WaitForChild(Player.Name)
+local Exec = false
+
+-- Main Gui Vars
+local plrGui = game.Players[Player.Name]:WaitForChild("PlayerGui")
+local CombatGui = plrGui:WaitForChild("CombatStats")
+local SurvivalGui = plrGui:WaitForChild("SurvivalStats")
+local DangerGui = plrGui:WaitForChild("Danger")
+
+-- Specific CombatGui Vars
+local PostureGui = CombatGui:WaitForChild("Posture")
+local IndicatorsGui = CombatGui:WaitForChild("Indicators")
+local EtherGui = CombatGui:WaitForChild("Ether")
+local TempoGui = CombatGui:WaitForChild("Tempo")
+local ArmorGui = CombatGui:WaitForChild("Armor")
+local HealthGui = CombatGui:WaitForChild("Health")
+local NatArmorGui = CombatGui:WaitForChild("NaturalArmor")
+
+-- Specific SurvivalGui Vars
+local StomachGui = SurvivalGui:WaitForChild("Stomach")
+local WaterGui = SurvivalGui:WaitForChild("Water")
+local BloodGui = SurvivalGui:WaitForChild("Blood")
+
+if Exec == false then
+    Character.Shirt.ShirtTemplate = 6400450711
+    Character.Pants.PantsTemplate = 6399954942
+    
+    PostureGui.Slider.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    IndicatorsGui.Resonance.ImageColor3 = Color3.fromRGB(210, 110, 255)
+    HealthGui.Slider.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    EtherGui.Slider.BackgroundColor3 = Color3.fromRGB(140, 0, 255)
+    NatArmorGui.Slider.BackgroundColor3 = Color3.fromRGB(110, 0, 245)
+    
+    StomachGui.Slider.BackgroundColor3 = Color3.fromRGB(80, 80, 140)
+    WaterGui.Slider.BackgroundColor3 = Color3.fromRGB(15, 105, 200)
+    
+    if Character:FindFirstChild("KhanHair") then
+        Character.KhanHair.Transparency = 1
+    end
+    
+    if Character:FindFirstChild("KhanCirclet") then
+        Character.KhanCirclet.Color = Color3.fromRGB(255, 255, 255)
+        Character.KhanCirclet.Material = "Neon"
+    end
+    
+    for i, v in pairs(Character:GetChildren()) do
+        if v.Name == "Head" or v.Name == "Torso" or v.Name == "Left Arm" or v.Name == "Right Arm" or v.Name == "Left Leg" or v.Name == "Right Leg" then
+            v.Color = Color3.fromRGB(0, 0, 0)
+        end   
+        
+        if v.Name == "Head" then
+            if v:FindFirstChild("MarkingMount") then
+                v.MarkingMount.Color = Color3.fromRGB(0, 0, 0)
+                if v.MarkingMount:FindFirstChild("Sclera") then
+                    v.MarkingMount.Sclera.Color3 = Color3.fromRGB(0, 0, 0)
+                end    
+            end 
+            if v:FindFirstChild("FaceMount") then
+                for _, b in pairs(v.FaceMount:GetChildren()) do
+                    if b:FindFirstChildWhichIsA("Decal") then
+                        b.Color3 = Color3.fromRGB(255, 255, 255)
+                    end 
+                end    
+            end    
+        end    
+    end
+    
+end
+
