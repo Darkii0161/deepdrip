@@ -15,10 +15,11 @@ local Character = game.Workspace.Live:WaitForChild(Player.Name)
 local Exec = false
 
 -- Main Gui Vars
-local plrGui = game.Players[Player.Name]:WaitForChild("PlayerGui")
-local CombatGui = plrGui:WaitForChild("CombatStats")
-local SurvivalGui = plrGui:WaitForChild("SurvivalStats")
-local DangerGui = plrGui:WaitForChild("Danger")
+local plrGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+local StatsGui = plrGui:WaitForChild("StatsGui")
+local CombatGui = StatsGui:WaitForChild("CombatStats")
+local SurvivalGui = StatsGui:WaitForChild("SurvivalStats")
+local DangerGui = StatsGui:WaitForChild("Danger")
 
 -- Specific CombatGui Vars
 local PostureGui = CombatGui:WaitForChild("Posture")
@@ -35,6 +36,10 @@ local WaterGui = SurvivalGui:WaitForChild("Water")
 local BloodGui = SurvivalGui:WaitForChild("Blood")
 
 if Exec == false then
+    if not Character then
+        print("character not found while executing script")
+        return
+    end    
     Character.Shirt.ShirtTemplate = 6400450711
     Character.Pants.PantsTemplate = 6399954942
     
@@ -67,13 +72,17 @@ if Exec == false then
                 if v.MarkingMount:FindFirstChild("Sclera") then
                     v.MarkingMount.Sclera.Color3 = Color3.fromRGB(0, 0, 0)
                 end    
-            end 
+            end
             if v:FindFirstChild("FaceMount") then
-                for _, b in pairs(v.FaceMount:GetChildren()) do
+                local faceDecal = v.FaceMount:FindFirstChildWhichIsA("Decal").Name
+                if v.FaceMount:FindFirstChild(faceDecal) then
+                    v.FaceMount[faceDecal].Color3 = Color3.fromRGB(255, 255, 255)
+                end
+                --[[for _, b in pairs(v.FaceMount:GetChildren()) do
                     if b:FindFirstChildWhichIsA("Decal") then
                         b.Color3 = Color3.fromRGB(255, 255, 255)
                     end 
-                end    
+                end ]]   
             end    
         end    
     end
