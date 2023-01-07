@@ -9,7 +9,7 @@ if not game.Workspace:FindFirstChild("Live") then
     Player:Kick("don't execute this script here.".."   --Pot")
 end   
 if not game.Workspace.Live:FindFirstChild(Player.Name) then
-    Player:Kick("only exectute when you have loaded in your character.".."   --Pot")
+    Player:Kick("only execute when you have loaded in your character.".."   --Pot")
 end    
 local Character = game.Workspace.Live:WaitForChild(Player.Name)
 local Exec = false
