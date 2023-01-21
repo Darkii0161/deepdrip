@@ -39,6 +39,9 @@ local WaterGui = SurvivalGui:WaitForChild("Water")
 local BloodGui = SurvivalGui:WaitForChild("Blood")
 
 local function changeChar()
+    if ExecCD == true then
+        return
+    end
     Character.Shirt.ShirtTemplate = 6400450711
     Character.Pants.PantsTemplate = 6399954942
     
