@@ -13,6 +13,7 @@ if not game.Workspace.Live:FindFirstChild(Player.Name) then
 end    
 local Character = game.Workspace.Live:WaitForChild(Player.Name)
 local Exec = false
+local ExecCD = false
 
 -- Main Gui Vars
 local plrGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -35,11 +36,7 @@ local StomachGui = SurvivalGui:WaitForChild("Stomach")
 local WaterGui = SurvivalGui:WaitForChild("Water")
 local BloodGui = SurvivalGui:WaitForChild("Blood")
 
-if Exec == false then
-    if not Character then
-        print("character not found while executing script")
-        return
-    end    
+local function changeChar()
     Character.Shirt.ShirtTemplate = 6400450711
     Character.Pants.PantsTemplate = 6399954942
     
@@ -128,6 +125,31 @@ if Exec == false then
             end    
         end    
     end
-    
 end
 
+if Exec == false then
+    if not Character then
+        print("character not found while executing script")
+        return
+    end
+    ExecCD = true
+    task.spawn(function()
+        task.wait(2)
+        ExecCD = false
+    end)
+    changeChar()
+end
+
+Player.CharacterAdded:Connect(function(Character)
+    task.wait(0.1)
+    if not Character then
+        print("character not found while executing script")
+        return
+    end
+    ExecCD = true
+    task.spawn(function()
+        task.wait(2)
+        ExecCD = false
+    end)
+    changeChar()
+end)
