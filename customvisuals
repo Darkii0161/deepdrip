@@ -127,6 +127,7 @@ local function changeChar()
             end    
         end    
     end
+    print("Fully executed script deepdrip -- Pot")
 end
 
 if Exec == false then
@@ -142,19 +143,21 @@ if Exec == false then
     changeChar()
 end
 
-Requests.Reset.OnServerEvent:Connect(function()
-    task.wait(0.1)
-    WaitForChild(Character)
-    if not Character then
-        print("character not found while executing script")
-        return
-    end
-    ExecCD = true
-    task.spawn(function()
-        task.wait(2)
-        ExecCD = false
+coroutine.wrap(function()
+    Requests.Reset.OnServerEvent:Connect(function()
+        task.wait(0.1)
+        WaitForChild(Character)
+       --[[if not Character then
+            print("character not found while executing script")
+            return
+        end]]
+        ExecCD = true
+        task.spawn(function()
+            task.wait(2)
+            ExecCD = false
+        end)
+        changeChar()
     end)
-    changeChar()
 end)
 
 --[[Player.CharacterAdded:Connect(function(Character)
