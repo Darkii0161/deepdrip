@@ -135,9 +135,6 @@ if Exec == false then
         print("character not found while executing script")
         return
     end
-    if ExecCD == true then
-        return
-    end
     ExecCD = true
     task.spawn(function()
         task.wait(2)
@@ -154,9 +151,6 @@ coroutine.wrap(function()
             print("character not found while executing script")
             return
         end]]
-        if ExecCD == true then
-            return
-        end
         ExecCD = true
         task.spawn(function()
             task.wait(2)
