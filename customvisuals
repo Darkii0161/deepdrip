@@ -135,35 +135,7 @@ if Exec == false then
         print("character not found while executing script")
         return
     end
-    ExecCD = true
-    task.spawn(function()
-        task.wait(2)
-        ExecCD = false
-    end)
-    changeChar()
-end
-
-coroutine.wrap(function()
-    Requests.Get.OnServerEvent:Connect(function()
-        task.wait(0.1)
-        WaitForChild(Character)
-       --[[if not Character then
-            print("character not found while executing script")
-            return
-        end]]
-        ExecCD = true
-        task.spawn(function()
-            task.wait(2)
-            ExecCD = false
-        end)
-        changeChar()
-    end)
-end)
-
---[[Player.CharacterAdded:Connect(function(Character)
-    task.wait(0.1)
-    if not Character then
-        print("character not found while executing script")
+    if ExecCD == true then
         return
     end
     ExecCD = true
@@ -172,4 +144,4 @@ end)
         ExecCD = false
     end)
     changeChar()
-end)]]
+end
