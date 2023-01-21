@@ -70,6 +70,10 @@ if Exec == false then
         Character.HeadEquipment.Transparency = 1
     end
     
+    if Character:FindFirstChild("FaceEquipment") then
+        Character.FaceEquipment.Transparency = 1
+    end
+    
     if Character:FindFirstChild("EarsEquipment") then
         Character.EarsEquipment.Transparency = 1
     end
@@ -101,14 +105,20 @@ if Exec == false then
             v.Transparency = 1
             if v:FindFirstChild("MarkingMount") then
                 v.MarkingMount.Color = Color3.fromRGB(0, 0, 0)
+                v.MarkingMount.Transparency = 1
                 if v.MarkingMount:FindFirstChild("Sclera") then
                     v.MarkingMount.Sclera.Color3 = Color3.fromRGB(0, 0, 0)
-                end    
+                    v.MarkingMount.Sclera.Transparency = 1
+                end
+                if v.MarkingMount:FindFirstChild("Scar") then
+                    v.MarkingMount.Scar.Transparency = 1
+                end
             end
             if v:FindFirstChild("FaceMount") then
                 local faceDecal = v.FaceMount:FindFirstChildWhichIsA("Decal").Name
                 if v.FaceMount:FindFirstChild(faceDecal) then
                     v.FaceMount[faceDecal].Color3 = Color3.fromRGB(255, 255, 255)
+                    v.FaceMount[faceDecal].Transparency = 1
                 end
                 --[[for _, b in pairs(v.FaceMount:GetChildren()) do
                     if b:FindFirstChildWhichIsA("Decal") then
