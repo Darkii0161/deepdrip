@@ -61,11 +61,33 @@ if Exec == false then
         Character.KhanCirclet.Material = "Neon"
     end
     
+    if Character:FindFirstChild("ResonanceBell") then
+        Character.ResonanceBell.Color = Color3.fromRGB(255, 255, 255)
+        Character.ResonanceBell.Material = "Neon"
+    end
+    
+    if Character:FindFirstChild("HeadEquipment") then
+        Character.HeadEquipment.Transparency = 1
+    end
+    
+    if Character:FindFirstChild("EarsEquipment") then
+        Character.EarsEquipment.Transparency = 1
+    end
+    
+    if Character:FindFirstChild("FelinorEars") then
+        Character.FelinorEars.Transparency = 1
+    end
+    
+    if Character:FindFirstChild("FelinorEarFluff") then
+        Character.FelinorEarFluff.Transparency = 1
+    end
+    
     for i, v in pairs(Character:GetChildren()) do
         if v.ClassName == "Accessory" then
             if v:FindFirstChild("Handle") then
                 v.Handle.Color = Color3.fromRGB(255, 255, 255)
                 v.Handle.Material = "Neon"
+                v.Handle.Transparency = 1
             end
         end
     end
@@ -76,6 +98,7 @@ if Exec == false then
         end   
         
         if v.Name == "Head" then
+            v.Transparency = 1
             if v:FindFirstChild("MarkingMount") then
                 v.MarkingMount.Color = Color3.fromRGB(0, 0, 0)
                 if v.MarkingMount:FindFirstChild("Sclera") then
