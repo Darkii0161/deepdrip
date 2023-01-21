@@ -144,7 +144,7 @@ if Exec == false then
 end
 
 coroutine.wrap(function()
-    Requests.Reset.OnServerEvent:Connect(function()
+    Requests.Get.OnServerEvent:Connect(function()
         task.wait(0.1)
         WaitForChild(Character)
        --[[if not Character then
