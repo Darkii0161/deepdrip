@@ -2,7 +2,8 @@
 
 if not game:IsLoaded() then
     repeat task.wait(0.1) until game:IsLoaded()
-end    
+end
+print("Game is loaded!")
 
 local Player = game.Players.LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
